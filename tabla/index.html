@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/favicon.ico">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+
+	<title>DataTables example - Server-side processing</title>
+	<link rel="stylesheet" type="text/css" href="media/css/jquery.dataTables.css">
+	<link rel="stylesheet" type="text/css" href="resources/syntax/shCore.css">
+	<link rel="stylesheet" type="text/css" href="resources/demo.css">
+	<style type="text/css" class="init">
+
+	</style>
+	<script type="text/javascript" language="javascript" src="media/js/jquery.js"></script>
+	<script type="text/javascript" language="javascript" src="media/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="resources/syntax/shCore.js"></script>
+	<script type="text/javascript" language="javascript" src="resources/demo.js"></script>
+	<script type="text/javascript" language="javascript" class="init">
+
+$(document).ready(function() {
+	$('#example').dataTable( {
+		"language": {
+                "url": "dataTables.es.lang"
+            },
+		"processing": true,
+		"serverSide": true,
+		"ajax": "server_processing.php",
+		  "aoColumnDefs": [            
+     {
+       "aTargets": [ 9 ], // Column to target
+       "mRender": function ( data, type, full ) {
+         // 'full' is the row's data object, and 'data' is this column's data
+         // e.g. 'full[0]' is the comic id, and 'data' is the comic title
+
+ 					if (data===null) {
+ 						return data;
+ 					} else {
+ 					//return '<a href="http://ingenes.xtrategia.net/ingenesbebe/' + data + '" target="_blank">' + data + '</a>';
+ return '<a href="http://ingenes.xtrategia.net/ingenesbebe/' + data + '" target="_blank"><img src="http://ingenes.xtrategia.net/ingenesbebe/' + data + '" width="50px" height="50px"></a>';
+ 					}
+
+        	 //return '<a href="http://ingenes.xtrategia.net/ingenesbebe/' + data + '" target="_blank"><img src="http://ingenes.xtrategia.net/ingenesbebe/' + data + '" width="50px" height="50px"></a>';
+
+      
+       }
+     }
+   ]
+	} );
+} );
+
+	</script>
+</head>
+
+
+
+
+
+
+<body class="dt-example">
+
+
+			<table id="example" class="display" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Facebook ID</th>
+						<th>Nombre Padre</th>
+						<th>Apellidos Padre</th>
+						<th>Nombre Bebé</th>
+						<th>Teléfono casa</th>
+						<th>Teléfono celular</th>
+						<th>Email</th>
+						<th>NHC</th>
+						<th>Imagen</th>
+					</tr>
+				</thead>
+
+				<tfoot>
+					<tr>
+						<th>ID</th>
+						<th>Facebook ID</th>
+						<th>Nombre Padre</th>
+						<th>Apellidos Padre</th>
+						<th>Nombre Bebé</th>
+						<th>Teléfono casa</th>
+						<th>Teléfono celular</th>
+						<th>Email</th>
+						<th>NHC</th>
+						<th>Imagen</th>
+					</tr>
+				</tfoot>
+			</table>
+
+
+
+
+
+
+</body>
+</html>
